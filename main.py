@@ -8,8 +8,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 # @app.get('/')
 # def home():
-#     return {'text':'Khang dan nhu con cho'}
-
+#     return {'text':'Khanh cute
 # if __name__ == '__main__':
 #     uvicorn.run(app)
 
@@ -23,7 +22,7 @@ import pickle
 import numpy as np
 #For training
 def train() -> None:
-    with open('DoAn_DSS/heart_Disease_prediction_new_final.csv') as f:
+    with open('heart_Disease_prediction_new_final.csv') as f:
         df = pd.read_csv(f)
     # df = df.drop(['contact', 'poutcome'], axis=1)
     df_filtered = df.replace('unknown',np.nan)
@@ -151,12 +150,13 @@ class Ui_MainWindow(object):
         font.setKerning(False)
         self.label.setFont(font)
         self.label.setAlignment(QtCore.Qt.AlignCenter)
-        self.label.setObjectName("label_6")
         self.label_6 = QtWidgets.QLabel(self.centralwidget)
         self.label_6.setGeometry(QtCore.QRect(30, 200, 111, 31))
-        # font = QtGui.QFont()
-        # font.setPointSize(14)
-        # font.setKerning(False)
+        font = QtGui.QFont()
+        font.setPointSize(14)
+        self.label_6.setFont(font)
+        self.label_6.setObjectName("label_6")
+        font.setKerning(False)
         # self.label.setFont(font)
         # self.label.setAlignment(QtCore.Qt.AlignCenter)
         # self.label.setObjectName("label_8")
@@ -294,7 +294,9 @@ class Ui_MainWindow(object):
         a = ""
         if output == 0:
             a="KHÔNG CÓ KHẢ NĂNG"
-        else:
+            msg.setInformativeText(" {} {}  bị mắc bệnh tim".format(t,str(a)))
+            
+        elif output ==1:
             a="CÓ KHẢ NĂNG"
             msg.setInformativeText(" {} {}  bị mắc bệnh tim".format(t,str(a)))
         msg.setWindowTitle("Kết quả")
